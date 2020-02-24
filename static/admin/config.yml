@@ -1,5 +1,6 @@
 backend:
-  name: test-repo
+  name: randal-tech
+  repo: randalvance/randal-tech
 
 media_folder: static/assets
 public_folder: assets
