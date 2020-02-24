@@ -1,5 +1,5 @@
 backend:
-  name: randal-tech
+  name: github
   repo: randalvance/randal-tech
 
 media_folder: static/assets
