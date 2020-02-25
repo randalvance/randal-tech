@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `Hi, I'm Randal!`,
+    title: `Randal.tech - Randal Vance Cunanan!`,
     author: `Randal Vance Cunanan`,
     description: `Randal's Personal Website`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://randal.tech/`,
     social: {
       twitter: `randalvance`,
     },
@@ -70,8 +70,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Randal.tech`,
+        short_name: `randal-tech`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
