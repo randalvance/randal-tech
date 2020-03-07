@@ -1,4 +1,5 @@
 import React from 'react';
+import CreepyFace from 'react-creepyface';
 import { graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import { Frame, Logo, Words, withSounds } from 'arwes';
@@ -18,14 +19,39 @@ const IndexPage = ({ data, location, sounds }) => (
         <Centered style={{ margin: `${rhythm(1.5)} 0` }}>
             <div style={{ position: 'relative', height: 250, width: 250  }}>
                 <Logo animate size={250} style={{ position: 'absolute', left: 0, top: 0 }} />
-                <Image
+                <CreepyFace
+                    src="img/face.jpg"
+                    style={{
+                        borderRadius: '50%',
+                        width: 200,
+                        height: 200,
+                        position: 'absolute',
+                        left: 25,
+                        top: 25,
+                        transform: 'rotate(90deg)'
+                    }}
+                    options={{
+                        hover: 'img/facehover.jpg',
+                        looks: [
+                            { angle: 0, src: 'img/face000.jpg' },
+                            { angle: 45, src: 'img/face045.jpg' },
+                            { angle: 90, src: 'img/face090.jpg' },
+                            { angle: 135, src: 'img/face135.jpg' },
+                            { angle: 180, src: 'img/face180.jpg' },
+                            { angle: 225, src: 'img/face225.jpg' },
+                            { angle: 270, src: 'img/face270.jpg' },
+                            { angle: 315, src: 'img/face315.jpg' },
+                        ]
+                    }}
+                />
+                {/* <Image
                     style={{ position: 'absolute', left: 25, top: 25 }}
                     fixed={data.profileImage.childImageSharp.fixed}
                     alt={data.site.siteMetadata.author}
                     imgStyle={{
                         borderRadius: `50%`,
                     }}
-                />
+                /> */}
             </div>
         </Centered>
         <article style={{ marginTop: rhythm(2) }}>
