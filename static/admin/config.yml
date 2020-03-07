@@ -16,3 +16,11 @@ collections:
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: body, label: Body, widget: markdown }
+  - name: tool
+    label: Tool
+    folder: content/tools
+    create: true
+    fields:
+      - { name: name, label: Name }
+      - { name: description, label: Name }
+      - { name: projectUrl, label: "Project URL" }
