@@ -30,12 +30,12 @@ const sounds = {
 
 const imageUrls = ['/img/background.jpg', '/img/glow.png'];
 
-const soundUrls = [
-    '/sounds/deploy.mp3',
-    '/sounds/ask.mp3',
-    '/sounds/information.mp3',
-    '/sounds/click.mp3',
-];
+// const soundUrls = [
+//     '/sounds/deploy.mp3',
+//     '/sounds/ask.mp3',
+//     '/sounds/information.mp3',
+//     '/sounds/click.mp3',
+// ];
 
 class Layout extends React.Component {
     state = {
@@ -99,7 +99,7 @@ class Layout extends React.Component {
 
     startLoading() {
         this.loader
-            .load({ images: imageUrls, sounds: soundUrls })
+            .load({ images: imageUrls })
             .then(() => this.setState({ loading: false }));
     }
 }
