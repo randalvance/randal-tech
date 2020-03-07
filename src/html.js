@@ -12,6 +12,8 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {props.headComponents}
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,600"></link>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Electrolize"></link>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}

@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
-import { scale, rhythm } from '../utils/typography';
+import { Header as ArwesHeader, Words, Heading, withSounds } from 'arwes';
+import { scale } from '../utils/typography';
 
-const Header = ({ title }) => {
+const Header = ({ title, sounds }) => {
     const header = (
-        <h1
+        <Heading node="h1"
             style={{
                 ...scale(1.2),
-                marginBottom: rhythm(1.5),
+                marginBottom: 0,
                 marginTop: 0,
             }}
         >
-            <Link
-                style={{ color: `inherit` }}
-                to="/"
-            >
-                {title}
+            <Link style={{ color: `inherit` }} to="/">
+                <Words animate>{title}</Words>
             </Link>
-        </h1>
+        </Heading>
     );
-    return <header>{header}</header>;
+    return (
+        <ArwesHeader>{header}</ArwesHeader>
+    );
 };
 
-export default Header;
+export default withSounds()(Header);

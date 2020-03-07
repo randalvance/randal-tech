@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 import { rhythm } from '../utils/typography';
+import Button from '../components/button';
 
 const navigationItems = [
     {
@@ -21,12 +22,17 @@ const navigationItems = [
         link: '/reference',
         title: 'Reference',
     },
-]
+];
 const NavBar = () => (
     <StyledNav>
         {navigationItems.map(navItem => (
-            <NavLink to={navItem.link} title={navItem.title} activeClassName="active">
-                {navItem.title}
+            <NavLink
+                key={navItem.link}
+                to={navItem.link}
+                title={navItem.title}
+                activeClassName="active"
+            >
+                <Button>{navItem.title}</Button>
             </NavLink>
         ))}
     </StyledNav>

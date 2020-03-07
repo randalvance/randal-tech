@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import { Words } from 'arwes';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -9,7 +10,7 @@ const Resume = ({ data, location }) => (
     <Layout location={location} title={data.site.siteMetadata.title}>
         <SEO title="Resume" />
 
-        <h2>My Resume</h2>
+        <h2><Words animate>Reference</Words></h2>
         <div style={{ margin: '20px 0 40px' }}>Nothing to see here...YET!</div>
 
         <Link to="/">

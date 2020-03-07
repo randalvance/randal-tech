@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import { Words } from 'arwes';
 
 // import { rhythm } from '../utils/typography';
 import Layout from '../components/layout';
@@ -12,7 +13,7 @@ const Blog = ({ location, data }) => {
     return (
         <Layout location={location} title={data.site.siteMetadata.title}>
             <SEO title="All posts" />
-            <h2>Blog Posts</h2>
+            <h2><Words animate>Blog Posts</Words></h2>
             <div style={{ margin: '20px 0 40px' }}>
                 Nothing to see here...YET!
                 {/* {posts.map(({ node }) => {

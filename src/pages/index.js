@@ -1,40 +1,52 @@
 import React from 'react';
-import FadeIn from 'react-fade-in';
 import { graphql } from 'gatsby';
 import Image from 'gatsby-image';
+import { Frame, Logo, Words, withSounds } from 'arwes';
 
+import { rhythm } from '../utils/typography';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import InfoSound from '../components/infosound';
 import { Centered } from '../components/styledComponents';
 
-const IndexPage = ({ data, location }) => (
+const IndexPage = ({ data, location, sounds }) => (
     <Layout location={location} title={data.site.siteMetadata.title}>
         <SEO
             title="Home"
             keywords={[`randal`, `cunanan`, `blog`, `javascript`, `react`]}
         />
-        <Centered>
-            <Image
-                fixed={data.profileImage.childImageSharp.fixed}
-                alt={data.site.siteMetadata.author}
-                imgStyle={{
-                    borderRadius: `50%`,
-                }}
-            />
+        <Centered style={{ margin: `${rhythm(1.5)} 0` }}>
+            <div style={{ position: 'relative', height: 250, width: 250  }}>
+                <Logo animate size={250} style={{ position: 'absolute', left: 0, top: 0 }} />
+                <Image
+                    style={{ position: 'absolute', left: 25, top: 25 }}
+                    fixed={data.profileImage.childImageSharp.fixed}
+                    alt={data.site.siteMetadata.author}
+                    imgStyle={{
+                        borderRadius: `50%`,
+                    }}
+                />
+            </div>
         </Centered>
-        <article style={{ marginTop: 24 }}>
-            <FadeIn transitionDuration={1000}>
-                <p>
-                    How's it going! My name is <em>Randal Vance Cunanan</em> and
-                    I am a software developer with a passion on building cool
-                    things through coding.
-                </p>
-                <p>
-                    This website will contain my online resume, blogs posts
-                    related to software development, and personal notes and
-                    references such as list of libraries and tools.
-                </p>
-            </FadeIn>
+        <article style={{ marginTop: rhythm(2) }}>
+            <InfoSound>
+                <Frame
+                    animate
+                    corners={3}
+                    noBackground
+                    style={{ padding: rhythm(1) }}
+                >
+                    <p>
+                        <Words
+                            animate
+                        >{`How's it going! My name is Randal Vance Cunanan and I
+                am a software developer with a passion on building cool things
+                through coding. This website will contain my online resume,
+                blogs posts related to software development, and personal notes
+                and references such as list of libraries and tools.`}</Words>
+                    </p>
+                </Frame>
+            </InfoSound>
         </article>
     </Layout>
 );
@@ -57,4 +69,4 @@ export const pageQuery = graphql`
     }
 `;
 
-export default IndexPage;
+export default withSounds()(IndexPage);
