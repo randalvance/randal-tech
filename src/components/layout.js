@@ -22,66 +22,78 @@ const sounds = {
     shared: { volume: 1 },
     players: {
         info: { sound: { src: ['/sounds/information.mp3'] } },
-        click: { sound: { src: ['/sounds/click.mp3' ] }},
+        click: { sound: { src: ['/sounds/click.mp3'] } },
     },
 };
 
+const imageUrls = ['/img/background.jpg', '/img/glow.png'];
+
+const soundUrls = ['/sounds/information.mp3', '/sounds/click.mp3'];
+
 class Layout extends React.Component {
     state = {
-      show: false,
-      loaded: false,
+        loading: true,
     };
 
     loader = createLoader();
 
     componentDidMount() {
-      this.startLoading();
+        this.startLoading();
     }
-  
+
     render() {
         const { title, children } = this.props;
-        const { show } = this.state;
+        const { loading } = this.state;
 
         return (
             <ThemeProvider theme={createTheme()}>
                 <SoundsProvider sounds={createSounds(sounds)}>
-                    <Loading full animate show={!show} />
-                    <Arwes
-                        animate
-                        background="/img/background.jpg"
-                        pattern="/img/glow.png"
-                        show={show}
-                    >
-                        <Wrapper>
-                            <div
-                                style={{
-                                    marginLeft: `auto`,
-                                    marginRight: `auto`,
-                                    maxWidth: rhythm(24),
-                                    padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-                                }}
-                            >
-                                <NavBar />
-                                <Header title={title} />
-                                <main>
-                                    <Content>{children}</Content>
-                                </main>
-                            </div>
-                            <Footer animate>
-                                © {new Date().getFullYear()}, Built with
-                                {` `}
-                                <Link href="https://www.gatsbyjs.org">Gatsby</Link>
-                            </Footer>
-                        </Wrapper>
-                    </Arwes>
+                    {loading ? (
+                        <Loading full animate />
+                    ) : (
+                        <Arwes
+                            animate
+                            background="/img/background.jpg"
+                            pattern="/img/glow.png"
+                            show={!loading}
+                            showResources={!loading}
+                        >
+                            <Wrapper>
+                                <div
+                                    style={{
+                                        marginLeft: `auto`,
+                                        marginRight: `auto`,
+                                        maxWidth: rhythm(24),
+                                        padding: `${rhythm(1.5)} ${rhythm(
+                                            3 / 4
+                                        )}`,
+                                    }}
+                                >
+                                    <NavBar />
+                                    <Header title={title} />
+                                    <main>
+                                        <Content>{children}</Content>
+                                    </main>
+                                </div>
+                                <Footer animate>
+                                    © {new Date().getFullYear()}, Built with
+                                    {` `}
+                                    <Link href="https://www.gatsbyjs.org">
+                                        Gatsby
+                                    </Link>
+                                </Footer>
+                            </Wrapper>
+                        </Arwes>
+                    )}
                 </SoundsProvider>
             </ThemeProvider>
         );
     }
 
     startLoading() {
-      this.loader.load({ images: ['/img/background.jpg', '/img/glow.png']})
-        .then(() => this.setState({ show: true, loaded: true }));
+        this.loader
+            .load({ images: imageUrls, sounds: soundUrls })
+            .then(() => this.setState({ loading: false }));
     }
 }
 
