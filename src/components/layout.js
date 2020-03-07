@@ -9,9 +9,6 @@ import Header from './header';
 class Layout extends React.Component {
   render() {
     const { title, children } = this.props;
-
-    // @ts-ignore
-    const blogPath = `${__PATH_PREFIX__}/blog/`;
   
     return (
       <Wrapper>
@@ -26,7 +23,6 @@ class Layout extends React.Component {
           <NavBar />
           <Header
             title={title}
-            blogPath={blogPath}
           />
           <main>{children}</main>
         </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+import { rhythm } from '../utils/typography';
+
 const navigationItems = [
     {
         link: '/',
@@ -31,7 +33,7 @@ const NavBar = () => (
 );
 
 const StyledNav = styled.nav`
-    margin: 0 0 24px 0;
+    margin: 0 0 ${rhythm(1.5)} 0;
     display: flex;
     justify-content: center;
     align-content: center;

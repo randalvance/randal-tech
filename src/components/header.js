@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { scale, rhythm } from '../utils/typography';
 
-const Header = ({ title, blogPath }) => {
+const Header = ({ title }) => {
     const header = (
         <h1
             style={{
@@ -12,12 +12,8 @@ const Header = ({ title, blogPath }) => {
             }}
         >
             <Link
-                style={{
-                    boxShadow: `none`,
-                    textDecoration: `none`,
-                    color: `inherit`,
-                }}
-                to={window.location.pathname === blogPath ? `/blog/` : `/`}
+                style={{ color: `inherit` }}
+                to="/"
             >
                 {title}
             </Link>
