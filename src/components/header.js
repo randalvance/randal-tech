@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import { Words, Heading, withSounds } from 'arwes';
 import { scale } from '../utils/typography';

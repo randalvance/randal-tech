@@ -1,7 +1,6 @@
 import React from 'react';
 import CreepyFace from 'react-creepyface';
 import { graphql } from 'gatsby';
-import Image from 'gatsby-image';
 import { Frame, Logo, Words, withSounds } from 'arwes';
 
 import { rhythm } from '../utils/typography';
@@ -44,14 +43,6 @@ const IndexPage = ({ data, location, sounds }) => (
                         ]
                     }}
                 />
-                {/* <Image
-                    style={{ position: 'absolute', left: 25, top: 25 }}
-                    fixed={data.profileImage.childImageSharp.fixed}
-                    alt={data.site.siteMetadata.author}
-                    imgStyle={{
-                        borderRadius: `50%`,
-                    }}
-                /> */}
             </div>
         </Centered>
         <article style={{ marginTop: rhythm(2) }}>
