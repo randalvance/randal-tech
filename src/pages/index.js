@@ -6,7 +6,7 @@ import { Frame, Logo, Words, withSounds } from 'arwes';
 import { rhythm } from '../utils/typography';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import InfoSound from '../components/infosound';
+import PlaySound from '../components/playsound';
 import { Centered } from '../components/styledComponents';
 
 const IndexPage = ({ data, location, sounds }) => (
@@ -29,7 +29,7 @@ const IndexPage = ({ data, location, sounds }) => (
             </div>
         </Centered>
         <article style={{ marginTop: rhythm(2) }}>
-            <InfoSound>
+            <PlaySound sound="deploy">
                 <Frame
                     animate
                     corners={3}
@@ -46,7 +46,7 @@ const IndexPage = ({ data, location, sounds }) => (
                 and references such as list of libraries and tools.`}</Words>
                     </p>
                 </Frame>
-            </InfoSound>
+            </PlaySound>
         </article>
     </Layout>
 );

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { withSounds } from 'arwes';
 
-const InfoSound = ({ children, sounds }) => {
+const PlaySound = ({ children, sounds, sound }) => {
     useEffect(() => {
-        sounds.info.play();
+        sounds[sound].play();
     }, []);
     return children;
 };
 
-export default withSounds()(InfoSound);
+export default withSounds()(PlaySound);

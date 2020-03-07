@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { Row, Col } from 'arwes';
 
 import { rhythm } from '../utils/typography';
 import Button from '../components/button';
@@ -23,30 +24,39 @@ const navigationItems = [
         title: 'Reference',
     },
 ];
-const NavBar = () => (
-    <StyledNav>
-        {navigationItems.map(navItem => (
-            <NavLink
-                key={navItem.link}
-                to={navItem.link}
-                title={navItem.title}
-                activeClassName="active"
-            >
-                <Button>{navItem.title}</Button>
-            </NavLink>
-        ))}
-    </StyledNav>
-);
+const NavBar = () => {
+    return (
+        <StyledNav>
+            <Row>
+                {navigationItems.map(navItem => (
+                    <Col m={3} s={6} style={{ padding: rhythm(0.25) }}>
+                        <NavLink
+                            key={navItem.link}
+                            to={navItem.link}
+                            title={navItem.title}
+                            activeClassName="active"
+                        >
+                            <Button style={{ width: '100%', textAlign: 'center' }}>{navItem.title}</Button>
+                        </NavLink>
+                    </Col>
+                ))}
+            </Row>
+        </StyledNav>
+    );
+};
 
 const StyledNav = styled.nav`
-    margin: 0 0 ${rhythm(1.5)} 0;
+    margin: 0 0 ${rhythm(0.25)} 0;
     display: flex;
     justify-content: center;
     align-content: center;
 `;
 
 const NavLink = styled(Link)`
+    display: block;
     text-transform: uppercase;
+    min-width: 150px;
+    width: 100%;
 `;
 
 export default NavBar;

@@ -21,14 +21,21 @@ import Header from './header';
 const sounds = {
     shared: { volume: 1 },
     players: {
+        ask: { sound: { src: ['/sounds/ask.mp3'] } },
         info: { sound: { src: ['/sounds/information.mp3'] } },
         click: { sound: { src: ['/sounds/click.mp3'] } },
+        deploy: { sound: { src: ['/sounds/deploy.mp3'] } },
     },
 };
 
 const imageUrls = ['/img/background.jpg', '/img/glow.png'];
 
-const soundUrls = ['/sounds/information.mp3', '/sounds/click.mp3'];
+const soundUrls = [
+    '/sounds/deploy.mp3',
+    '/sounds/ask.mp3',
+    '/sounds/information.mp3',
+    '/sounds/click.mp3',
+];
 
 class Layout extends React.Component {
     state = {
@@ -71,7 +78,7 @@ class Layout extends React.Component {
                                 >
                                     <NavBar />
                                     <Header title={title} />
-                                    <main>
+                                    <main style={{ padding: rhythm(1) }}>
                                         <Content>{children}</Content>
                                     </main>
                                 </div>

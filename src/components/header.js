@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
-import { Header as ArwesHeader, Words, Heading, withSounds } from 'arwes';
+import { Words, Heading, withSounds } from 'arwes';
 import { scale } from '../utils/typography';
 
 const Header = ({ title, sounds }) => {
@@ -10,6 +10,7 @@ const Header = ({ title, sounds }) => {
                 ...scale(1.2),
                 marginBottom: 0,
                 marginTop: 0,
+                textAlign: 'center',
             }}
         >
             <Link style={{ color: `inherit` }} to="/">
@@ -18,7 +19,7 @@ const Header = ({ title, sounds }) => {
         </Heading>
     );
     return (
-        <ArwesHeader>{header}</ArwesHeader>
+        <header>{header}</header>
     );
 };
 
