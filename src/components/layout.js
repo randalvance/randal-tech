@@ -65,31 +65,29 @@ class Layout extends React.Component {
                             show={!loading}
                             showResources={!loading}
                         >
-                            <Wrapper>
-                                <div
-                                    style={{
-                                        marginLeft: `auto`,
-                                        marginRight: `auto`,
-                                        maxWidth: rhythm(24),
-                                        padding: `${rhythm(1.5)} ${rhythm(
-                                            3 / 4
-                                        )}`,
-                                    }}
-                                >
-                                    <NavBar />
-                                    <Header title={title} />
-                                    <main style={{ padding: rhythm(1) }}>
-                                        <Content>{children}</Content>
-                                    </main>
-                                </div>
-                                <Footer animate>
-                                    © {new Date().getFullYear()}, Built with
-                                    {` `}
-                                    <Link href="https://www.gatsbyjs.org">
-                                        Gatsby
-                                    </Link>
-                                </Footer>
-                            </Wrapper>
+                            <div
+                                style={{
+                                    marginLeft: `auto`,
+                                    marginRight: `auto`,
+                                    maxWidth: rhythm(24),
+                                    minHeight: 'calc(100vh - 35px)',
+                                    padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
+                                }}
+                            >
+                                <NavBar location={this.props.location} />
+                                <Header title={title} />
+                                <main style={{ padding: rhythm(1), paddingLeft: 0, paddingRight: 0 }}>
+                                    <Content>{children}</Content>
+                                </main>
+                            </div>
+
+                            <Footer animate>
+                                © {new Date().getFullYear()}, Built with
+                                {` `}
+                                <Link href="https://www.gatsbyjs.org">
+                                    Gatsby
+                                </Link>
+                            </Footer>
                         </Arwes>
                     )}
                 </SoundsProvider>
@@ -103,10 +101,6 @@ class Layout extends React.Component {
             .then(() => this.setState({ loading: false }));
     }
 }
-
-const Wrapper = styled.div`
-    min-height: 100vh;
-`;
 
 const Footer = styled(AresFooter)`
     text-align: center;

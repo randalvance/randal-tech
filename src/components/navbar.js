@@ -24,7 +24,7 @@ const navigationItems = [
         title: 'Reference',
     },
 ];
-const NavBar = () => {
+const NavBar = ({ location }) => {
     return (
         <StyledNav>
             <Row>
@@ -34,9 +34,12 @@ const NavBar = () => {
                             key={navItem.link}
                             to={navItem.link}
                             title={navItem.title}
-                            activeClassName="active"
                         >
-                            <Button style={{ width: '100%', textAlign: 'center' }}>{navItem.title}</Button>
+                            <Button style={{ width: '100%', textAlign: 'center' }}
+                                {...(location.pathname === navItem.link ? { layer: 'success' } : {})}
+                            >
+                                {navItem.title.toUpperCase()}
+                            </Button>
                         </NavLink>
                     </Col>
                 ))}
