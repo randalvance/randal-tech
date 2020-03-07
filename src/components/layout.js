@@ -5,10 +5,12 @@ import {
     Content,
     Footer as AresFooter,
     Link,
+    Loading,
     ThemeProvider,
     SoundsProvider,
     createTheme,
     createSounds,
+    createLoader,
 } from 'arwes';
 
 import { rhythm } from '../utils/typography';
@@ -25,16 +27,30 @@ const sounds = {
 };
 
 class Layout extends React.Component {
+    state = {
+      show: false,
+      loaded: false,
+    };
+
+    loader = createLoader();
+
+    componentDidMount() {
+      this.startLoading();
+    }
+  
     render() {
         const { title, children } = this.props;
+        const { show } = this.state;
 
         return (
             <ThemeProvider theme={createTheme()}>
                 <SoundsProvider sounds={createSounds(sounds)}>
+                    <Loading full animate show={!show} />
                     <Arwes
                         animate
                         background="/img/background.jpg"
                         pattern="/img/glow.png"
+                        show={show}
                     >
                         <Wrapper>
                             <div
@@ -61,6 +77,11 @@ class Layout extends React.Component {
                 </SoundsProvider>
             </ThemeProvider>
         );
+    }
+
+    startLoading() {
+      this.loader.load({ images: ['/img/background.jpg', '/img/glow.png']})
+        .then(() => this.setState({ show: true, loaded: true }));
     }
 }
 
