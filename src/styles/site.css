@@ -2,3 +2,20 @@ body {
     color: #fff;
     background-color: #303030;
 }
+
+a {
+    padding: 0 8px;
+    color: #03adfc;
+    text-decoration: none !important;
+    box-shadow: none !important;
+}
+a:first-child {
+    padding-left: 0;
+}
+a:hover {
+    color: #fff;
+}
+a.active {
+    color: #fff;
+    font-weight: bold;
+}

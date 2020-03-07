@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { rhythm, scale } from '../utils/typography';
+import { rhythm } from '../utils/typography';
 
+import NavBar from './navbar';
 import Header from './header';
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props;
-    // @ts-ignore
-    const rootPath = `${__PATH_PREFIX__}/`;
+    const { title, children } = this.props;
 
     // @ts-ignore
     const blogPath = `${__PATH_PREFIX__}/blog/`;
@@ -24,9 +23,9 @@ class Layout extends React.Component {
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
+          <NavBar />
           <Header
             title={title}
-            rootPath={rootPath}
             blogPath={blogPath}
           />
           <main>{children}</main>

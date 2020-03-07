@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `Randal.tech`,
+    title: `Randal Vance Cunanan`,
     author: `Randal Vance Cunanan`,
     description: `Randal's Personal Website`,
     siteUrl: `https://randal.tech/`,
