@@ -1,0 +1,15 @@
+{
+  "title": "Randal.Tech",
+  "url": "https://randal.tech/",
+  "description": "I write about anything related to software development.",
+  "feed": {
+    "subtitle": "Randal Vance Cunanan's Blog Posts",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://randal.tech/"
+  },
+  "author": {
+    "name": "Randal Vance Cunanan",
+    "email": "randal@randalvance.net"
+  }
+}

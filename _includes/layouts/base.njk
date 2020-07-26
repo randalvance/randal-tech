@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ renderData.title or title or metadata.title }}</title>
+    <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
+    <link rel="icon" href="{{ '/img/logo.svg' | url }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>
+          <a href="/" title="Randal Cunanan">Randal Cunanan</a>
+        </h1>
+        <div class="nav-bar">
+          <nav>
+            <a href="/" title="Home">Home</a>
+          </nav>
+          <div class="post-title">{{ title or 'My Site' }}</div>
+        </div>
+      </div>
+    </header>
+    <div class="gradient-wrapper">
+      <svg preserveAspectRatio="none" viewBox="0 0 10 30" width="100%" height="128">
+        <defs>
+          <linearGradient id="eased-gradient-gradient-ptee" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:white;stop-opacity:1"></stop>
+            <stop offset="22.5%" style="stop-color:white;stop-opacity:0.896"></stop>
+            <stop offset="29%" style="stop-color:white;stop-opacity:0.825"></stop>
+            <stop offset="35.3%" style="stop-color:white;stop-opacity:0.741"></stop>
+            <stop offset="47.1%" style="stop-color:white;stop-opacity:0.55"></stop>
+            <stop offset="52.9%" style="stop-color:white;stop-opacity:0.45"></stop>
+            <stop offset="58.8%" style="stop-color:white;stop-opacity:0.352"></stop>
+            <stop offset="64.7%" style="stop-color:white;stop-opacity:0.259"></stop>
+            <stop offset="71%" style="stop-color:white;stop-opacity:0.175"></stop>
+            <stop offset="77.5%" style="stop-color:white;stop-opacity:0.104"></stop>
+            <stop offset="84.5%" style="stop-color:white;stop-opacity:0.05"></stop>
+            <stop offset="91.9%" style="stop-color:white;stop-opacity:0.013"></stop>
+            <stop offset="100%" style="stop-color:white;stop-opacity:0"></stop>
+          </linearGradient>
+        </defs>
+        <mask id="eased-gradient-mask-ptee">
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#eased-gradient-gradient-ptee)"></rect>
+        </mask>
+        <rect x="0" y="0" width="100%" height="100%" mask="url(#eased-gradient-mask-ptee)" fill="var(--backgroundColor)" style="transition:fill 350ms"></rect>
+      </svg>
+    </div>
+    <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
+      {{ content | safe }}
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="built-with">Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a>
+        </div>
+        
+        <p class="copyright">Randal Cunanan © 2020</p>
+        
+        <!--
+        <a class="feed" href="/feed/feed.xml">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="6.18" cy="17.82" r="2.18"></circle>
+            <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path>
+          </svg>
+        </a>
+        -->
+      </div>
+    </footer>
+
+    {% if title %}
+      <script>
+        (function () {
+          if (window.IntersectionObserver) {
+            const header = document.querySelector('header');
+            const options = {
+              threshold: 1
+            };
+            const callback = function (entries) {
+              if (!entries[0].isIntersecting) {
+                header
+                  .classList
+                  .add('animate-post-title');
+              } else {
+                header
+                  .classList
+                  .remove('animate-post-title');
+              }
+            };
+
+            const observer = new IntersectionObserver(callback, options);
+            observer.observe(document.querySelector('article h1'));
+          }
+        })();
+      </script>
+    {% endif %}
+  </body>
+</html>
