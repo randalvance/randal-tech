@@ -1,0 +1,7 @@
+{
+  "layout": "blogPost",
+  "permalink": "blog/{{ title | slug }}/index.html",
+  "tags": [
+    "blogPosts"
+  ]
+}

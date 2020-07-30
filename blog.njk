@@ -1,6 +1,6 @@
 ---
 layout: layouts/home.njk
-permalink: /posts/
+permalink: /blog/
 eleventyNavigation:
   key: Archive
   order: 2
@@ -8,5 +8,5 @@ eleventyNavigation:
 
 <h1>Archive</h1>
 
-{% set postslist = collections.posts %}
+{% set postslist = collections.blogPosts %}
 {% include "postslist.njk" %}
