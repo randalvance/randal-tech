@@ -124,10 +124,6 @@ footer .icon {
   opacity: 0.9;
 }
 
-.gradient-wrapper {
-  display: none;
-}
-
 main {
   align-self: center;
   max-width: var(--maxWidth);
@@ -357,13 +353,6 @@ a.tag:hover {
   nav a:hover:before {
     right: 1rem;
     opacity: 0.5;
-  }
-
-  .gradient-wrapper {
-    display: block;
-    position: fixed;
-    top: 60px;
-    width: 100%;
   }
 
   main {
