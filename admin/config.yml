@@ -2,6 +2,7 @@ site_url: https://randal.tech
 backend:
   name: github
   repo: randalvance/randal-tech
+publish_mode: editorial_workflow
 media_folder: "img/uploads"
 collections:
   - name: "blogPosts" # Used in routes, e.g., /admin/collections/blog
