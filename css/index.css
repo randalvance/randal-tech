@@ -51,6 +51,7 @@ h6 {
 
 h1 {
   font-size: 1.5em;
+  margin-bottom: 0.25em;
 }
 
 h2 {
@@ -80,6 +81,11 @@ p,
 li,
 img {
   max-width: var(--maxWidth);
+}
+
+.reading-time {
+  font-size: 0.8em;
+  margin-left: 0.25em;
 }
 
 header {
