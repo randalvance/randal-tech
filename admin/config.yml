@@ -6,7 +6,7 @@ publish_mode: editorial_workflow
 media_folder: "img/uploads"
 collections:
   - name: "blogPosts" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog Posts" # Used in the UI
+    label: "Blog Post" # Used in the UI
     folder: "blogPosts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}"
