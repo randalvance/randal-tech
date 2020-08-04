@@ -225,7 +225,7 @@ pre {
 
 .highlight-line {
   display: block;
-  padding: 0.125em 1em;
+  padding: 0.125em 0;
   text-decoration: none; /* override del, ins, mark defaults */
   color: inherit; /* override del, ins, mark defaults */
 }
