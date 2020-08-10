@@ -256,7 +256,7 @@ pre {
   background-color: #902f2f;
 }
 
-.tag {
+a.tag {
   display: inline-block;
   vertical-align: text-top;
   text-transform: uppercase;
