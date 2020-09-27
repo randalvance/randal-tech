@@ -30,7 +30,7 @@ This is a GraphQL Tutorial.
 1. Response from REST might have too many fields that the client does not need.
 
 # The GraphQL Query
-```gql
+```text
 {
   heroes(first: 10) {
     name
