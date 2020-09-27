@@ -1,0 +1,24 @@
+html,
+body {
+  background-color: #333;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Montserrat", system-ui, sans-serif;
+}
+
+body {
+  padding: 20px;
+}
+
+code {
+    color: #fcba03;
+}
+
+code[class*="language-"] {
+	background: #272822;
+    display: block;
+    padding: 10px;
+    color: #f8f8f2;
+	font-size: 0.85em;
+	line-height: 1.375;
+}
