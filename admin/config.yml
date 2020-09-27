@@ -12,8 +12,31 @@ collections:
     slug: "{{slug}}"
     preview_path: "blog/{{slug}}/"
     fields: # The fields for each document, usually in front matter
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Description"
+        name: "description"
+        widget: "text"
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+      - label: "Cover Image"
+        name: "coverImage"
+        required: false
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Image"
+            name: "image"
+            widget: "image"
+            allow_multiple: false
+          - label: "Credits"
+            name: "credits"
+            widget: "string"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
