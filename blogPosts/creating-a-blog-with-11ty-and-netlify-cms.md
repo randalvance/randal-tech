@@ -5,11 +5,13 @@ description: In this tutorial, we will use 11ty and Netlify CMS to create a pers
 tags:
   - 11ty
   - netlify
+coverImage:
+  image: /img/uploads/shanghai-highway.jpg
+  credits: <span>Photo by <a
+    href="https://unsplash.com/@dnevozhai?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Denys
+    Nevozhai</a> on <a
+    href="https://unsplash.com/s/photos/road-junction?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 ---
-![](/img/uploads/shanghai-highway.jpg "Photo by Denys Nevozhai")
-
-
-
 In this tutorial, I will guide you on creating a blog using JAM Stack.
 
 What is 11ty?
