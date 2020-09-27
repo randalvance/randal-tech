@@ -1,5 +1,5 @@
 ---
-layout: layouts/post.njk
+layout: layouts/blogPost.njk
 title: About Me
 eleventyNavigation:
   key: About Me

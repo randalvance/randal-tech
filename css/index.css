@@ -34,7 +34,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", system-ui, sans-serif;
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: 300;
   color: var(--fontColor);
   background-color: var(--backgroundColor);
@@ -83,9 +83,39 @@ img {
   max-width: var(--maxWidth);
 }
 
-.reading-time {
+.meta-info {
+  display: flex;
+  align-items: center;
   font-size: 0.8em;
   margin-left: 0.25em;
+  margin-bottom: 1em;
+}
+
+.meta-info * {
+  margin-right: 0.5em;
+}
+
+.meta-info svg {
+  fill: var(--fontColor);
+  width: 1.25em;
+  margin-right: 0.5em;
+}
+
+.meta-info time {
+  margin-right: 1em;
+}
+
+.cover-image {
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.cover-image img {
+  margin-bottom: 0.25em;
+}
+
+.cover-image .credits {
+  font-size: 0.75em;
 }
 
 header {
@@ -377,10 +407,6 @@ a.tag:hover {
   .post-footer {
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .post-date {
-    flex-basis: 20em;
   }
 
   footer .container .built-with,
