@@ -10,6 +10,7 @@ collections:
     folder: "blogPosts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}"
+    preview_path: "blog/{{slug}}/"
     fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
