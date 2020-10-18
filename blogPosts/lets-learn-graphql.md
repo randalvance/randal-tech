@@ -8,23 +8,12 @@ coverImage:
   image: /img/uploads/graphql-cover.png
   credits: None yet.
 ---
-This is a GraphQL Tutorial.
-
-# What is GraphQL?
-
-* It is a Query Language for your API. It is not a library.
-* Alternate Approach to REST
-* Client can only ask for exactly what they need and nothing more.
-* You can query all the data you need in a single HTTP Request.
-* Language Agnostic
-* You can get all the data in a single request.
+GraphQL stands for *Graph Query Language*. It is a language used to query your API. Think of it as SQL for your API. GraphQL is therefore not a library or framework. There is an entire [language specification](https://spec.graphql.org/June2018/) for it with multiple implementations for different programming languages. Since it is a language to query your API, you have full control of what you fetch from the backend. This, and a bunch of other advantages, makes it a suitable alternative to REST APIs.
 
 # History
+Back in 2012, Facebook is trying to optimize their mobile applications. They had to rewrite its mobile application from scratch using native technologies. They immediately hit a roadblock when they tried to reuse the existing REST APIs. The native app requires a highly dynamic UI and therefore, its data needs must be dynamic as well. This is the point where they thought a new technology has to be developed.
 
-1. Started by Facebook back in 2012 as an internal project to overcome data fetching issues in their native mobile platform.
-2. In 2015, GraphQL was open sourced.
-3. Ever since, there has been a huge community involvement.
-4. GraphQL came into existence due to the need for better flexibility and efficiency in client-server communication.
+GraphQL started in Facebook as an internal project called SuperGraph. In 2015, they decided to share it to the world by finally announcing it as GraphQL in React Europe 2015 conference. They open sourced it and release the language specification for everyone to read and create implementations. Ever since, there has been a huge community involvement in GraphQL. There currently are now multiple implementations across different programming languages, and dozens of tools to make GraphQL development easy.
 
 # REST vs GraphQL
 
@@ -54,7 +43,7 @@ This is a GraphQL Tutorial.
 
 TODO: Show the JSON Response
 
-# Mutations
+# Mutations)
 
 # Who is Using GraphQL?
 
