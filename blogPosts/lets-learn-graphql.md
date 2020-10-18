@@ -115,24 +115,31 @@ You might think of a similar data structure called a tree. A tree is just a type
 
 # GraphQL Basics
 
-## GraphQL Document and Operations
-You perform a GraphQL request by first constructing a *GraphQL Document*. The document can contain one or more *GraphQL operations*. There are 3 types of GraphQL operations.
+You perform a GraphQL request by first constructing a *GraphQL Document*. It declares the operation that the server should execute. The document can contain one or more operations.
+
+There are 3 types of GraphQL operations.
 1. *Query* - A read-only operation. Used for querying a data without causing any side-effects.
 2. *Mutation* - An operation that causes side-effects. Typically used for creating, updating and deleting data.
 3. *Subscription* - Allows the client to subscribe for real-time updates.
 
-Let's start with a simple GraphQL document with a single query operation. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
+Here is how a GraphQL query operation looks like.
 
 ```gql
-query MyFirstQuery {
-  users {
+query MyFirstQuery($userId: String!) {
+  user(id: $userId) {
     id
     name
     email
   }
 }
 ```
-A GraphQL operation starts with what type of operation it is, `query`, `mutation`, or `subscription`. It is then followed by an optional operation name, in our example, it's `MyFirstQuery`. Following that is a block of code called a *Selection Set*.
+A GraphQL operation starts with what type of operation it is, `query`, `mutation`, or `subscription`.
+
+It is then followed by an optional operation name, in our example, it's `MyFirstQuery`.
+
+Following that is one or more variables. In our example, we only have one which is `$userId` and given it a type of `String`. The `!` after the `String` means the variable is required cannot have a `null` value.
+
+Following that is a block of code called a *Selection Set*. A selection set specifies which fields to include in the result.
 
 A typical implementation of a GraphQL client performs an HTTP `POST` to a single endpoint. Which means, you can use whatever REST client to perform a GraphQL query. This includes `curl`, `Postman`, or the `fetch` API. But a typical scenario is using a GraphQL client such as [Apollo Client](https://www.apollographql.com/docs/react/api/core/ApolloClient/) or [Relay](https://relay.dev/). 
 
