@@ -115,30 +115,53 @@ You might think of a similar data structure called a tree. A tree is just a type
 
 # GraphQL Queries
 
-Here is an example GraphQL query so you have an initial idea of how it looks.
+Here is an example GraphQL query so you have an initial idea of how it looks. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
 
 ```gql
 query {
-  heroes(first: 10) {
+  users {
+    id
     name
-    powers
-    sidekick {
-       name
-       powers
-    }
-    villains {
-       name
-       heroes {
-          name
-       }
-    }
+    email
+  }
+}
+```
+Here's the response that will be returned to the client:
+```json
+{
+  "data": {
+    "users": [
+      {
+        "id": "ckgepn3el000h0796pgmgfw6l",
+        "name": "Randal Vance Cunanan",
+        "email": "randal@example.com"
+      },
+      {
+        "id": "ckgepsyx900310796bnc2urs8",
+        "name": "John Smith",
+        "email": "john.smith@example.com"
+      },
+      {
+        "id": "ckgept9fn003d07962ihl3hq4",
+        "name": "Donald Trump",
+        "email": "donald.trump@example.com"
+      },
+      {
+        "id": "ckgepth7z003m0796ttg0x1x6",
+        "name": "Tonald Drump",
+        "email": "tonald.drump@example.com"
+      },
+      {
+        "id": "ckgeptuam00400796srsfi84e",
+        "name": "Joe Biden",
+        "email": "joe.biden@example.com"
+      }
+    ]
   }
 }
 ```
 
-TODO: Show the JSON Response
-
-The response is typically in JSON format (although it can be anything that can be represented as a map). The response has two main sections
+The response is typically in JSON format (although it can be anything that can be represented as a map). The response is a single object with 2 main properties, the `data` which contains the actual data requested, and an `error` which will only be populated if there are errors encountered by the backend. Note that both properties can be present. For example, a query can have multiple parts, and if one part succeeds and another part fails, then we will both have the `data` and `errors` properties. If both fails, then we will only have the `errors` property in the response.
 
 # Mutations)
 
