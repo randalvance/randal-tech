@@ -121,11 +121,10 @@ You perform a GraphQL request by first constructing a *GraphQL Document*. The do
 2. *Mutation* - An operation that causes side-effects. Typically used for creating, updating and deleting data.
 3. *Subscription* - Allows the client to subscribe for real-time updates.
 
-## GraphQL Query Example
-Let's start with a quite simple GraphQL document with a single query operation. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
+Let's start with a simple GraphQL document with a single query operation. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
 
 ```gql
-query {
+query MyFirstQuery {
   users {
     id
     name
@@ -133,6 +132,8 @@ query {
   }
 }
 ```
+A GraphQL operation starts with what type of operation it is, `query`, `mutation`, or `subscription`. It is then followed by an optional operation name, in our example, it's `MyFirstQuery`. Following that is a block of code called a *Selection Set*.
+
 A typical implementation of a GraphQL client performs an HTTP `POST` to a single endpoint. Which means, you can use whatever REST client to perform a GraphQL query. This includes `curl`, `Postman`, or the `fetch` API. But a typical scenario is using a GraphQL client such as [Apollo Client](https://www.apollographql.com/docs/react/api/core/ApolloClient/) or [Relay](https://relay.dev/). 
 
 ## GraphQL Response
