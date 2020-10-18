@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="129.41808mm"
+   height="106.29979mm"
+   viewBox="0 0 129.41808 106.29979"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
+   sodipodi:docname="graphql-example-types.svg">
+  <defs
+     id="defs2">
+    <rect
+       x="22.995659"
+       y="31.542717"
+       width="41.310783"
+       height="15.262605"
+       id="rect851" />
+    <rect
+       x="27.472689"
+       y="29.304201"
+       width="34.391739"
+       height="17.297619"
+       id="rect14" />
+    <rect
+       x="22.995659"
+       y="31.542717"
+       width="41.310783"
+       height="15.262605"
+       id="rect865" />
+    <rect
+       x="22.995659"
+       y="31.542717"
+       width="36.836277"
+       height="13.025352"
+       id="rect873" />
+    <rect
+       x="22.995659"
+       y="31.542717"
+       width="18.490801"
+       height="8.9982967"
+       id="rect881" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49393843"
+     inkscape:cx="694.0655"
+     inkscape:cy="243.88362"
+     inkscape:document-units="in"
+     inkscape:current-layer="g1991"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:snap-global="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1680"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="opacity:1"
+     transform="translate(-4.0617445,-3.9337262)">
+    <g
+       id="g1991">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.254;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;paint-order:normal"
+         id="rect1969"
+         width="129.16408"
+         height="106.04579"
+         x="4.1887445"
+         y="4.0607262" />
+      <text
+         xml:space="preserve"
+         id="text12"
+         style="font-style:normal;font-weight:normal;font-size:10.58329999999999949px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect14);fill:#0000ff;fill-opacity:1;stroke:none;" />
+      <g
+         id="g857"
+         transform="translate(14.675361,-6.4910153)">
+        <rect
+           style="fill:#800080;fill-rule:evenodd;stroke-width:0.144672"
+           id="rect10"
+           width="35.069031"
+           height="19.895754"
+           x="14.32898"
+           y="18.355513" />
+        <text
+           xml:space="preserve"
+           id="text849"
+           style="font-style:normal;font-weight:normal;font-size:7.05555999999999983px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect851);fill:#ffffff;fill-opacity:1;stroke:none;"
+           transform="translate(0,-7.3260504)"><tspan
+             x="22.996094"
+             y="37.97997"><tspan
+               style="shape-inside:url(#rect851)">User</tspan></tspan></text>
+      </g>
+      <g
+         id="g863"
+         transform="translate(14.526211,61.563171)">
+        <rect
+           style="fill:#800080;fill-rule:evenodd;stroke-width:0.144672"
+           id="rect859"
+           width="35.069031"
+           height="19.895754"
+           x="14.32898"
+           y="18.355513" />
+        <text
+           xml:space="preserve"
+           id="text861"
+           style="font-style:normal;font-weight:normal;font-size:7.05555999999999983px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect865);fill:#ffffff;fill-opacity:1;stroke:none;"
+           transform="translate(2.3864033,-7.4752006)"><tspan
+             x="22.996094"
+             y="37.97997"><tspan
+               style="shape-inside:url(#rect865)">Tag</tspan></tspan></text>
+      </g>
+      <g
+         id="g871"
+         transform="translate(71.587953,21.359287)">
+        <g
+           id="g1657"
+           transform="translate(3.2813045,7.4575103)">
+          <rect
+             style="fill:#800080;fill-rule:evenodd;stroke-width:0.144672"
+             id="rect867"
+             width="35.069031"
+             height="19.895754"
+             x="14.32898"
+             y="18.355513" />
+          <text
+             xml:space="preserve"
+             id="text869"
+             style="font-style:normal;font-weight:normal;font-size:5.64444000000000035px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect873);fill:#ffffff;fill-opacity:1;stroke:none;"
+             transform="translate(-4.4825817,-6.4086884)"><tspan
+               x="22.996094"
+               y="36.692563"><tspan
+                 style="shape-inside:url(#rect873)">Comment</tspan></tspan></text>
+        </g>
+      </g>
+      <g
+         id="g879"
+         transform="translate(14.675361,28.816798)">
+        <rect
+           style="fill:#800080;fill-rule:evenodd;stroke-width:0.144672"
+           id="rect875"
+           width="35.069031"
+           height="19.895754"
+           x="14.32898"
+           y="18.355513" />
+        <text
+           xml:space="preserve"
+           id="text877"
+           style="font-style:normal;font-weight:normal;font-size:7.05555999999999983px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect881);fill:#ffffff;fill-opacity:1;stroke:none;"
+           transform="translate(1.6469623,-7.3260504)"><tspan
+             x="22.996094"
+             y="37.97997"><tspan
+               style="shape-inside:url(#rect881)">Post</tspan></tspan></text>
+      </g>
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.254;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         d="m 46.538856,31.760251 v 15.41206"
+         id="path899"
+         inkscape:connector-type="orthogonal"
+         inkscape:connector-curvature="0"
+         inkscape:connection-end="#g879"
+         inkscape:connection-start="#g857"
+         sodipodi:nodetypes="csc" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 46.493547,67.068064 -0.05853,12.85062"
+         id="path1665"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0"
+         inkscape:connection-start="#g879"
+         inkscape:connection-end="#g863" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 64.073372,57.120188 25.124866,-10e-7"
+         id="path1685"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0"
+         inkscape:connection-start="#g879"
+         inkscape:connection-end="#g871" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 106.73275,47.17231 V 24.193624 c 0,-1.190625 -1.19062,-2.38125 -2.38125,-2.38125 H 64.073372"
+         id="path1919"
+         inkscape:connector-type="orthogonal"
+         inkscape:connector-curvature="9"
+         inkscape:connection-start="#g871"
+         inkscape:connection-end="#g857" />
+    </g>
+  </g>
+</svg>

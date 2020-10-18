@@ -88,7 +88,7 @@ We can just "declare" what we need in the query to GraphQL endpoint. This is dif
 
 ## Strongly Typed
 
-In GraphQL, you need to first define a schema which will defines the available types and fields that it can return. Think of each type as a table, and every type has a set of fields. Each field has a type which can be one of the GraphQL basic types, such as `Int`, `String`, `Boolean`, and `Float`, or another custom type you have created. This allows GraphQL to validate the input parameters the client passed to it and the output or data that backend server sends back. GraphQL implementations have this validation built in.
+In GraphQL, you need to first define a schema which will defines the available types and fields that it can return. Think of each type as a table, and every type has a set of fields. Each field has a type which can be one of the GraphQL scalar types, such as `Int`, `String`, `Boolean`, and `Float`, or another custom type you have created. This allows GraphQL to validate the input parameters the client passed to it and the output or data that backend server sends back. GraphQL implementations have this validation built in.
 
 ## Introspection
 
@@ -112,21 +112,115 @@ TODO: Create an image of Graph
 
 You might think of a similar data structure called a tree. A tree is just a type of graph with some constraints. A tree has a single root while in a typical graph, any node can be a root. A node in a tree can only belong to a single parent while in a graph, you can connect a node to any number of other nodes.
 
+# GraphQL operations
 
-# GraphQL Basics
+There are 3 types of GraphQL operations you can send to the GraphQL server for processing.
 
-You perform a GraphQL request by first constructing a *GraphQL Document*. It declares the operation that the server should execute. The document can contain one or more operations.
-
-There are 3 types of GraphQL operations.
 1. *Query* - A read-only operation. Used for querying a data without causing any side-effects.
 2. *Mutation* - An operation that causes side-effects. Typically used for creating, updating and deleting data.
 3. *Subscription* - Allows the client to subscribe for real-time updates.
 
-Here is how a GraphQL query operation looks like.
+# GraphQL Schema
+
+The GraphQL Schema defines what operations your GraphQL server supports. During the development of a GraphQL server,
+the schema is one of the first things that must be defined. In addition to the operations that can be performed, the team that writes the
+GraphQL Schema must know what data the client might need. This allows them to include the needed fields to the schema.
+
+Consider this graph representing a blogging application.
+
+![Graph QL Types](../img/uploads/graphql-example-types.svg)
+
+* A user can have 0 or more posts.
+* A user can have 0 or more comments.
+* A post can have 0 or more comments.
+* A post can have 0 or more tags.
+
+First, we need to define the types for each entity along with their properties and types.
 
 ```gql
-query MyFirstQuery($userId: String!) {
-  user(id: $userId) {
+type User {
+  id: Id!
+  name: String!
+  email: String!
+  age: Int
+  posts: [Post]
+  comments: [Comment!]
+}
+
+type Post {
+  id: Id!
+  title: String!
+  publishedDate: String
+  author: User!
+  tags: [Tag]
+  comments: [Comment!]
+}
+
+type Comment {
+  id: Id!
+  text: String!
+  author: Author!
+  post: Post!
+}
+
+type Tag {
+  id: Id!
+  name: String!
+  posts: [Post!]
+}
+```
+I've discussed that GraphQL is strongly typed and we must specify the type for every field.
+Each field can either be a scalar type or an object type.
+
+The are 5 built-in scalar types provided by GraphQL:
+1. `Int` - represents a signed 32-bit integer
+2. `Float` - represents a signed double-precision fractional value
+3. `String` -  a sequence of UTF-8 characters
+4. `Boolean` - a value of either `true` or `false`
+5. `ID` - a special type of `String` value that represents a unique ID for a resource
+
+An object type is just a type that is composed of scalar types or other object types.
+In our example schema, `User`, `Post`, `Comment`, and `Tag` are object types. Each object type has a list of fields.
+Each fields can have a scalar type or reference another object type. For example, our `Post` object has an `author` field which is of
+type `User`. If a field represents an array, you can wrap the type with square-brackets as seen in `User`'s `posts` field.
+
+If you want to tell that a field cannot have a `null` value, then we can put a `!` at the end of the type.
+In case of arrays, putting it inside square-brackets ensures that every element must not be `null`. You can also put the `!` at the end
+of the square-bracket and it will enforce that the array itself is not `null`.
+
+The types alone in the schema is not enough. To actually let clients perform operations, you need to define at least one of the 3
+special types representing the 3 GraphQL operations, `Query`, `Mutation`, `Subscription`.
+
+Here is an example where we now expose 3 fields for the query operations.
+
+```gql
+type Query {
+  users: [User!]!
+  posts: [Posts!]!
+  comments: [Comment!]!
+}
+```
+This will alow the client to query `users`, `posts`, and `comments`.
+
+You will do the same if you have `Mutation` and `Subscription` operations.
+```gql
+type Mutation {
+  # List of mutations operations here
+}
+type Subscription {
+  # List of subscription operations here
+}
+```
+
+# GraphQL Basics
+
+You perform a GraphQL request by first constructing a *GraphQL Document*. It declares the operation that the server should execute.
+The document can contain one or more operations. Here is how a GraphQL query operation looks like.
+This queries for all the users in the system and returns the `id`, `name`, and `email` of each user.
+
+```gql
+query {
+  users {
     id
     name
     email
@@ -135,13 +229,17 @@ query MyFirstQuery($userId: String!) {
 ```
 A GraphQL operation starts with what type of operation it is, `query`, `mutation`, or `subscription`.
 
-It is then followed by an optional operation name, in our example, it's `MyFirstQuery`.
-
-Following that is one or more variables. In our example, we only have one which is `$userId` and given it a type of `String`. The `!` after the `String` means the variable is required cannot have a `null` value.
-
 Following that is a block of code called a *Selection Set*. A selection set specifies which fields to include in the result.
+If a field is a object type, then it can have is own selection set. In our example, `users` field is a object type so we
+need to specify further which fields of each user we would want to fetch. If a field is a scalar type, then we don't need to further
+specify a selection set. Scalar types are `String`, `Int`, `Float`, `Boolean`, and `Id`.
 
-A typical implementation of a GraphQL client performs an HTTP `POST` to a single endpoint. Which means, you can use whatever REST client to perform a GraphQL query. This includes `curl`, `Postman`, or the `fetch` API. But a typical scenario is using a GraphQL client such as [Apollo Client](https://www.apollographql.com/docs/react/api/core/ApolloClient/) or [Relay](https://relay.dev/). 
+## GraphQL Request
+A typical implementation of a GraphQL client performs an HTTP `POST` to a single endpoint.
+You can use whatever REST client to perform a GraphQL operation. This includes `curl`, `Postman`, or the `fetch` API.
+A typical scenario is using a GraphQL client such as
+[Apollo Client](https://www.apollographql.com/docs/react/api/core/ApolloClient/) or [Relay](https://relay.dev/)
+which has more features than simply fetching, such as caching the data.
 
 ## GraphQL Response
 Here's the response that will be returned to the client:
@@ -179,7 +277,11 @@ Here's the response that will be returned to the client:
 }
 ```
 
-The response is typically in JSON format (although it can be anything that can be represented as a map). The response is a single object with 2 main properties, the `data` which contains the actual data requested, and an `error` which will only be populated if there are errors encountered by the backend. Note that both properties can be present. For example, a query can have multiple parts, and if one part succeeds and another part fails, then we will both have the `data` and `errors` properties. If both fails, then the `data` property will be `null`.
+The response is typically in JSON format (although it can be anything that can be represented as a map).
+The response is a single object with 2 main properties, the `data` which contains the actual data requested, and an `error`
+which will only be populated if there are errors encountered by the backend. Note that both properties can be present.
+For example, a query can have multiple parts, and if one part succeeds and another part fails,
+then we will both have the `data` and `errors` properties. If both fails, then the `data` property will be `null`.
 
 As an example, we can include an invalid property `xyz` in the `users` query.
 ```gql
@@ -209,9 +311,12 @@ Here is the output:
   ]
 }
 ```
-The response object is part of the standard language specification of GraphQL, so it should be consistent regardless of what library and language you use to develop the GraphQL server.
+The response object is part of the standard language specification of GraphQL, so it should be consistent regardless of what library
+and language you use to develop the GraphQL server.
 
-# Mutations
+## Query
+
+## Mutations
 
 # Who is Using GraphQL?
 
@@ -225,3 +330,7 @@ The response object is part of the standard language specification of GraphQL, s
 https://graphql.org/users/
 
 https://www.graphql.com/case-studies/
+
+It is then followed by an optional operation name, in our example, it's `MyFirstQuery`.
+
+Following that is one or more variables. In our example, we only have one which is `$userId` and given it a type of `String`. The `!` after the `String` means the variable is required cannot have a `null` value.
