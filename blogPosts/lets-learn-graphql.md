@@ -113,9 +113,16 @@ TODO: Create an image of Graph
 You might think of a similar data structure called a tree. A tree is just a type of graph with some constraints. A tree has a single root while in a typical graph, any node can be a root. A node in a tree can only belong to a single parent while in a graph, you can connect a node to any number of other nodes.
 
 
-# GraphQL Queries
+# GraphQL Basics
 
-Let's start with a very simple GraphQL query. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
+## GraphQL Document and Operations
+You perform a GraphQL request by first constructing a *GraphQL Document*. The document can contain one or more *GraphQL operations*. There are 3 types of GraphQL operations.
+1. *Query* - A read-only operation. Used for querying a data without causing any side-effects.
+2. *Mutation* - An operation that causes side-effects. Typically used for creating, updating and deleting data.
+3. *Subscription* - Allows the client to subscribe for real-time updates.
+
+## GraphQL Query Example
+Let's start with a quite simple GraphQL document with a single query operation. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
 
 ```gql
 query {
@@ -126,6 +133,8 @@ query {
   }
 }
 ```
+A typical implementation of a GraphQL client performs an HTTP `POST` to a single endpoint. Which means, you can use whatever REST client to perform a GraphQL query. This includes `curl`, `Postman`, or the `fetch` API. But a typical scenario is using a GraphQL client such as [Apollo Client](https://www.apollographql.com/docs/react/api/core/ApolloClient/) or [Relay](https://relay.dev/). 
+
 ## GraphQL Response
 Here's the response that will be returned to the client:
 ```json
