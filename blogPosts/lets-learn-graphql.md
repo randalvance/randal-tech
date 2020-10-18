@@ -115,7 +115,7 @@ You might think of a similar data structure called a tree. A tree is just a type
 
 # GraphQL Queries
 
-Here is an example GraphQL query so you have an initial idea of how it looks. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
+Let's start with a very simple GraphQL query. This query fetches all the `users` in our system and returns each user's `id`, `name`, and `email`.
 
 ```gql
 query {
@@ -126,6 +126,7 @@ query {
   }
 }
 ```
+## GraphQL Response
 Here's the response that will be returned to the client:
 ```json
 {
@@ -161,9 +162,39 @@ Here's the response that will be returned to the client:
 }
 ```
 
-The response is typically in JSON format (although it can be anything that can be represented as a map). The response is a single object with 2 main properties, the `data` which contains the actual data requested, and an `error` which will only be populated if there are errors encountered by the backend. Note that both properties can be present. For example, a query can have multiple parts, and if one part succeeds and another part fails, then we will both have the `data` and `errors` properties. If both fails, then we will only have the `errors` property in the response.
+The response is typically in JSON format (although it can be anything that can be represented as a map). The response is a single object with 2 main properties, the `data` which contains the actual data requested, and an `error` which will only be populated if there are errors encountered by the backend. Note that both properties can be present. For example, a query can have multiple parts, and if one part succeeds and another part fails, then we will both have the `data` and `errors` properties. If both fails, then the `data` property will be `null`.
 
-# Mutations)
+As an example, we can include an invalid property `xyz` in the `users` query.
+```gql
+query {
+  users {
+    id
+    name
+    email
+    xyz
+  }
+}
+```
+Here is the output:
+```json
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Cannot query field 'xyz' on type 'User'. (line 6, column 5):\n    xyz\n    ^",
+      "locations": [
+        {
+          "line": 6,
+          "column": 5
+        }
+      ]
+    }
+  ]
+}
+```
+The response object is part of the standard language specification of GraphQL, so it should be consistent regardless of what library and language you use to develop the GraphQL server.
+
+# Mutations
 
 # Who is Using GraphQL?
 
