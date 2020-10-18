@@ -24,6 +24,7 @@ Here is an example of a REST API call:
 GET http://localhost:8080/api/posts
 ```
 This could return a list of posts as JSON:
+
 ```json
 [
     {
@@ -52,6 +53,7 @@ This could return a list of posts as JSON:
     }
 ]
 ```
+
 If your frontend will display all this posts including all the properties of each post (`id`, `title`, `thumbnail`, `body`, and `date`), then the data returned by the API is totally fine.
 
 ## Overfetching
@@ -135,7 +137,7 @@ Consider this graph representing a blogging application.
 * A post can have 0 or more comments.
 * A post can have 0 or more tags.
 
-First, we need to define the types for each entity along with their properties and types.
+First, we need to define the types for each entity along with their fields and types.
 
 ```gql
 type User {
@@ -169,10 +171,12 @@ type Tag {
   posts: [Post!]
 }
 ```
+
 I've discussed that GraphQL is strongly typed and we must specify the type for every field.
 Each field can either be a scalar type or an object type.
 
 The are 5 built-in scalar types provided by GraphQL:
+
 1. `Int` - represents a signed 32-bit integer
 2. `Float` - represents a signed double-precision fractional value
 3. `String` -  a sequence of UTF-8 characters
@@ -200,9 +204,11 @@ type Query {
   comments: [Comment!]!
 }
 ```
+
 This will alow the client to query `users`, `posts`, and `comments`.
 
 You will do the same if you have `Mutation` and `Subscription` operations.
+
 ```gql
 type Mutation {
   # List of mutations operations here
@@ -212,11 +218,12 @@ type Subscription {
 }
 ```
 
-# GraphQL Basics
+The schema serves as a documentation for developers and can be introspected and used by tools for auto-completion and generating clients.
+
+# GraphQL Documents
 
 You perform a GraphQL request by first constructing a *GraphQL Document*. It declares the operation that the server should execute.
 The document can contain one or more operations. Here is how a GraphQL query operation looks like.
-This queries for all the users in the system and returns the `id`, `name`, and `email` of each user.
 
 ```gql
 query {
@@ -227,12 +234,43 @@ query {
   }
 }
 ```
-A GraphQL operation starts with what type of operation it is, `query`, `mutation`, or `subscription`.
 
-Following that is a block of code called a *Selection Set*. A selection set specifies which fields to include in the result.
-If a field is a object type, then it can have is own selection set. In our example, `users` field is a object type so we
-need to specify further which fields of each user we would want to fetch. If a field is a scalar type, then we don't need to further
-specify a selection set. Scalar types are `String`, `Int`, `Float`, `Boolean`, and `Id`.
+This queries for all the users in the system and returns the `id`, `name`, and `email` of each user.
+
+A GraphQL operation starts with what type of operation it is, `query`, `mutation`, or `subscription`.
+Note that if you omit the operation type, it will be considered as a query instead.
+Therefore, the following is similar to the operation above.
+
+```gql
+{
+  users {
+    id
+    name
+    email
+  }
+}
+```
+
+Following that is a block of code called a *Selection Set*. A selection set is wrapped by a pair of curly braces (`{` and `}`).
+A selection set specifies which fields to include in the result. If a field is an object type, then it can have its own selection set.
+In our example, `users` field is a object type so we need to specify further which fields of each user we would want to fetch.
+If a field is a scalar type, then we don't need to further specify a selection set.
+
+You can also query for other top level fields. If you want to also get all the posts from the backend, you can do so.
+```gql
+query {
+  users {
+    id
+    name
+    email
+  }
+  posts {
+    id
+    title
+    body
+  }
+}
+```
 
 ## GraphQL Request
 A typical implementation of a GraphQL client performs an HTTP `POST` to a single endpoint.
@@ -242,7 +280,21 @@ A typical scenario is using a GraphQL client such as
 which has more features than simply fetching, such as caching the data.
 
 ## GraphQL Response
-Here's the response that will be returned to the client:
+
+For the following query:
+
+```gql
+query {
+  users {
+    id
+    name
+    email
+  }
+}
+```
+
+The following JSON response will be returned to the client:
+
 ```json
 {
   "data": {
@@ -256,21 +308,6 @@ Here's the response that will be returned to the client:
         "id": "ckgepsyx900310796bnc2urs8",
         "name": "John Smith",
         "email": "john.smith@example.com"
-      },
-      {
-        "id": "ckgept9fn003d07962ihl3hq4",
-        "name": "Donald Trump",
-        "email": "donald.trump@example.com"
-      },
-      {
-        "id": "ckgepth7z003m0796ttg0x1x6",
-        "name": "Tonald Drump",
-        "email": "tonald.drump@example.com"
-      },
-      {
-        "id": "ckgeptuam00400796srsfi84e",
-        "name": "Joe Biden",
-        "email": "joe.biden@example.com"
       }
     ]
   }
@@ -278,10 +315,11 @@ Here's the response that will be returned to the client:
 ```
 
 The response is typically in JSON format (although it can be anything that can be represented as a map).
-The response is a single object with 2 main properties, the `data` which contains the actual data requested, and an `error`
-which will only be populated if there are errors encountered by the backend. Note that both properties can be present.
-For example, a query can have multiple parts, and if one part succeeds and another part fails,
-then we will both have the `data` and `errors` properties. If both fails, then the `data` property will be `null`.
+The response is a single object with 2 main fields, the `data` which contains the actual data requested, and an `errors`
+which will only be populated if there are errors encountered by the backend. Note that both fields can be present.
+For example, a query can have multiple fields, and if one field succeeds resolution but the other fails,
+then we will both have the `data` and `errors` properties. If both fails, then the `data` property will be `null` and the `errors`
+will contain error information for both fields.
 
 As an example, we can include an invalid property `xyz` in the `users` query.
 ```gql
@@ -314,9 +352,107 @@ Here is the output:
 The response object is part of the standard language specification of GraphQL, so it should be consistent regardless of what library
 and language you use to develop the GraphQL server.
 
-## Query
+## Nested Fields
 
-## Mutations
+Since we are working on a graph, each node can be associated to other nodes. In our blogging example, a user can have many posts.
+With GraphQL, we can fetch all the users along with all the posts for each user in one call to the backend.
+
+```gql
+query {
+  users {
+    id
+    name
+    posts {
+      id
+      title
+      body
+    }
+  }
+}
+```
+
+And here's the response:
+
+```json
+{
+  "data": {
+    "users": [
+      {
+        "id": "ckgepn3el000h0796pgmgfw6l",
+        "name": "Randal Vance Cunanan",
+        "posts": [
+          {
+            "id": "ckgeprikp001z0796rxsa64nt",
+            "title": "My First Post",
+            "body": "This is my first post"
+          },
+          {
+            "id": "ckgeyblyo00vg0796j1m7y0y1",
+            "title": "My Second Post",
+            "body": "My second post!"
+          }
+        ]
+      },
+      {
+        "id": "ckgepsyx900310796bnc2urs8",
+        "name": "John Smith",
+        "posts": [
+          {
+            "id": "ckgeygmdb00z007969q2ckl1q",
+            "title": "GraphQL Fundamentals",
+            "body": "Let's learn GraphQL."
+          }
+        ]
+      },
+    ]
+  }
+}
+```
+
+Each post has an author, so we can even go further and also select the fields of the `author` field for each post.
+
+```gql
+query {
+  users {
+    id
+    name
+    posts {
+      id
+      title
+      body
+      author {
+        name
+        email
+      }
+    }
+  }
+}
+```
+
+You can further get the author's comments.
+
+```gql
+query {
+  users {
+    id
+    name
+    posts {
+      id
+      title
+      body
+      author {
+        name
+        email
+        comments {
+          text
+        }
+      }
+    }
+  }
+}
+```
+
+## Parameters
 
 # Who is Using GraphQL?
 
@@ -330,7 +466,3 @@ and language you use to develop the GraphQL server.
 https://graphql.org/users/
 
 https://www.graphql.com/case-studies/
-
-It is then followed by an optional operation name, in our example, it's `MyFirstQuery`.
-
-Following that is one or more variables. In our example, we only have one which is `$userId` and given it a type of `String`. The `!` after the `String` means the variable is required cannot have a `null` value.
